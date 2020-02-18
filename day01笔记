@@ -1,0 +1,207 @@
+自我介绍：
+王建立    老王
+
+今天的内容：
+1  搭建学习环境 
+安装虚拟机软件
+安装ubuntu系统
+2 学习linux的基本命令
+ls   显示当前工作路径下的文件
+pwd  显示当前工作路径
+cal   显示当前月份的日历
+cal 2020 显示2020年全年的日历
+cal 05 2020  显示2020年5月份的日历
+
+clear  清除屏幕
+向上的箭头   找出上一条指令
+向下的箭头   向下翻出指令
+
+date  显示系统当前日期
+date +%y-%m-%d  显示系统的当前年月日
+                  +必须的   紧跟%y   %y  代表年份    %m   月份  %d  代表日
+                  - 分割符
+有很多这样的命令
+这些命令还有很多的参数
+没有老师能一一的讲解这些命令和参数
+靠我们自己   那我们怎么办呢？
+学会找帮助
+linux 系统下帮助的获取
+有三种方式：
+1 command  --help
+tarena@ubuntu:~$ ls --help
+用法：ls [选项]... [文件]...
+[]  可选的 
+... 省略号  可以是多个
+ls -l   	使用较长格式列出信息
+解释:  以长格式显示当前路径下的文件
+长格式指出文件的属性信息
+所有以.打头的文件都是隐藏文件  linux文件的一个特点
+tarena@ubuntu:~$ ls 
+day01    Documents  examples.desktop  Pictures  Templates  workdir
+Desktop  Downloads  Music             Public    Videos     安装信息.txt
+tarena@ubuntu:~$ ls -a
+.              Documents         .mission-control  Videos
+..             Downloads         .mozilla          .viminfo
+.bash_history  examples.desktop  Music             .vimrc
+.bash_logout   .fontconfig       .pam_environment  workdir
+.bashrc        .gconf            Pictures          .Xauthority
+.bashrcbak     .gnome2           .profile          .xinput.d
+.cache         .gnome2_private   Public            .xsession-errors
+.config        .gtk-bookmarks    .pulse            .xsession-errors.old
+day01          .gvfs             .pulse-cookie     安装信息.txt
+.dbus          .ICEauthority     .sqlite_history
+Desktop        .kermrc           Templates
+.dmrc          .local            .thumbnails
+
+tab键的使用    文件名字补齐功能
+
+
+tarena@ubuntu:~$ date --help
+用法：date [选项]... [+格式]
+
+tarena@ubuntu:~$ date +%Y-%m-%d
+2020-02-17
+tarena@ubuntu:~$ date +%y-%m-%d
+20-02-17
+tarena@ubuntu:~$ date +%H-%M-%S
+11-02-14
+
+注意： linux下严格区分大小写
+
+2 info  command
+退出 q键
+info   date
+
+
+3  man command     man 1 command
+man ls
+帮助页面的退出   q键
+ls(1)   man 1 ls
+1   代表的是命令    ls是命令
+3   代表的是库函数   标C c语言 printf   scanf fopen ...
+man 3 printf   printf(3)
+man 3 fopen    fopen(3)
+
+简单回顾上午知识点：
+ls   ls -l    ls -a   ls -la
+当前工作路径  什么是当前工作路径？
+查看当前工作路径   pwd
+linux特点   文件名字如果以.开头，代表的是隐藏文件
+cal   大家了解  
+date  命令  掌握 
+命令帮助信息的获取
+1   command --help
+2   info   command
+3   man  command    man 1 command
+tab  键  自动补齐的功能
+向上箭头   向下箭头   clear
+
+下午还是linux的命令
+当前工作路径    目前在系统的哪个路径下  就是当前工作路径
+绝对路径    从树根开始直到找到这个文件，这条路径就是绝对路径
+相对路径   相对于当前工作路径直到找到这个文件  这条路径就是相对路径
+
+cd  路径   将路径切换到指定的路径中
+／  代表树根路径
+.   当前工作路径
+..  表示父目录  上一级文件夹
+～  当前用户工作主目录
+当前用户   什么是当前用户？
+linux系统是一个多用户的操作系统
+每一个操作员都有一个唯一的身份登录到电脑系统上。每一个用户都有自己的一块地盘。
+tarena   有自己的一个工作地盘   就是这个用户的工作主目录
+root  用户
+
+当前用户的主目录？
+当前用户是tarena  ，那么他的工作地盘就是这个用户的工作主目录。
+～
+你一定要知道在不在你的地盘上？
+cd -  撤销最近的cd操作
+
+tarena@ubuntu:/$ pwd
+/
+tarena@ubuntu:/$ cd etc    使用的是相对路径
+tarena@ubuntu:/etc$ pwd
+/etc
+------------------------------------------------------
+tarena@ubuntu:/$ pwd
+/
+tarena@ubuntu:/$ cd /etc  使用的是绝对路径
+tarena@ubuntu:/etc$ pwd
+/etc
+tarena@ubuntu:/etc$ 
+
+tarena@ubuntu:/etc$ pwd
+/etc
+tarena@ubuntu:/etc$ cd ../home/tarena/   使用的是相对路径
+tarena@ubuntu:~$ 
+
+cd的使用总结   熟练掌握
+
+文件夹的操作
+如何创建一个文件夹？
+mkdir 文件夹名字     创建一个文件夹
+
+文件夹及其文件的命名规则
+字母 数字 下划线组成  但是不能以数字打头。
+01.c  02.c   不符合linux的命名规范
+
+rmdir 文件夹的路径  删除一个文件夹   这个文件夹必须是空文件夹
+就是这个文件夹当中不允许有文件
+
+当前工作路径
+/home/tarena
+想在当前工作路径下创建
+jiangsu/xuzhou/A
+
+tarena@ubuntu:~$ ls
+day01    Documents  examples.desktop  Pictures  Templates  workdir
+Desktop  Downloads  Music             Public    Videos     安装信息.txt
+tarena@ubuntu:~$ mkdir -p jiangsu/xuzhou/A
+tarena@ubuntu:~$ ls
+day01      Downloads         Music     Templates  安装信息.txt
+Desktop    examples.desktop  Pictures  Videos
+Documents  jiangsu           Public    workdir
+tarena@ubuntu:~$ cd jiangsu/
+tarena@ubuntu:~/jiangsu$ ls
+xuzhou
+tarena@ubuntu:~/jiangsu$ cd xuzhou/
+tarena@ubuntu:~/jiangsu/xuzhou$ ls
+A
+tarena@ubuntu:~/jiangsu/xuzhou$ cd A
+tarena@ubuntu:~/jiangsu/xuzhou/A$ pwd
+/home/tarena/jiangsu/xuzhou/A
+tarena@ubuntu:~/jiangsu/xuzhou/A$ 
+
+问题？
+tarena@ubuntu:~$ cd /
+tarena@ubuntu:/$ mkdir -p jiangsu/xuzhou/A
+mkdir: 无法创建目录"jiangsu": 权限不够
+tarena@ubuntu:/$ 
+当前工作路径是哪里？   ／
+我们是哪一个用户呢？   tarena  我们的地盘是哪里呢？/home/tarena
+
+tree  树    显示树叉上的子树
+
+创建一个文件
+touch 文件路径    如果文件不存在，创建一个文件。如果文件存在，更新文件的访问时间
+
+jiangsu/xuzhou/A/fileA
+
+
+总结： 
+路径   相对路径  绝对路径
+重点  重点  重点
+cd 命令   路径的切换
+tree 命令
+文件夹的操作  mkdir   rmdir
+用户   
+touch  文件的路径    
+
+
+
+
+
+
+
+
